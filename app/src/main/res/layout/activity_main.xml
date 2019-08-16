@@ -38,7 +38,7 @@
             android:layout_marginBottom="8dp">
 
             <com.google.android.material.textfield.TextInputEditText
-                android:id="@+id/signup_input_kid_age"
+                android:id="@+id/birth_date_text_view"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:hint="Enter birth date"
@@ -95,7 +95,9 @@
                 android:hint="Enter Your Age (Example 32)"
                 android:inputType="number"
                 android:maxLines="1"
-                android:paddingTop="4dp" />
+                android:paddingTop="4dp"
+                android:visibility="gone"
+                />
         </com.google.android.material.textfield.TextInputLayout>
 
 

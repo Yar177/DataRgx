@@ -17,7 +17,7 @@ public class MainActivity extends AppCompatActivity {
     TextInputEditText usernameInputText;
     TextInputEditText passwordInputText;
     TextInputEditText parentAgeInputText;
-    TextInputEditText kidAgeInputText;
+    TextInputEditText birthdateTV;
 
     Button signupBtn;
 
@@ -33,7 +33,7 @@ public class MainActivity extends AppCompatActivity {
         usernameInputText = findViewById(R.id.signup_input_email);
         passwordInputText = findViewById(R.id.signup_input_password);
         parentAgeInputText = findViewById(R.id.signup_input_parent_age);
-        kidAgeInputText = findViewById(R.id.signup_input_kid_age);
+        birthdateTV = findViewById(R.id.birth_date_text_view);
 
         TextWatcher tw = new TextWatcher() {
             private String current = "";
@@ -81,8 +81,8 @@ public class MainActivity extends AppCompatActivity {
 
                     sel = sel < 0 ? 0 : sel;
                     current = clean;
-                    kidAgeInputText.setText(current);
-                    kidAgeInputText.setSelection(sel < current.length() ? sel : current.length());
+                    birthdateTV.setText(current);
+                    birthdateTV.setSelection(sel < current.length() ? sel : current.length());
                 }
             }
 
@@ -93,7 +93,7 @@ public class MainActivity extends AppCompatActivity {
             public void afterTextChanged(Editable s) {}
         };
 
-        kidAgeInputText.addTextChangedListener(tw);
+        birthdateTV.addTextChangedListener(tw);
         signupBtn = findViewById(R.id.btn_signup);
         signupBtn.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -102,7 +102,7 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-//        kidAgeInputText.setOnClickListener(new View.OnClickListener() {
+//        birthdateTV.setOnClickListener(new View.OnClickListener() {
 //            @Override
 //            public void onClick(View v) {
 //                datePicker();
