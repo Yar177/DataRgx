@@ -35,6 +35,22 @@ public class MainActivity extends AppCompatActivity {
         parentAgeInputText = findViewById(R.id.signup_input_parent_age);
         birthdateTV = findViewById(R.id.birth_date_text_view);
 
+        birthdateTV.setOnFocusChangeListener(new View.OnFocusChangeListener() {
+            @Override
+            public void onFocusChange(View view, boolean b) {
+                if (b){
+                    if (birthdateTV.getText().toString().isEmpty()){
+                        birthdateTV.setTextColor(getResources().getColor(R.color.gray));
+                        birthdateTV.setText("MM/DD/YYYY");
+
+                    }else {
+                        return;
+                    }
+                }
+            }
+        });
+
+
         TextWatcher tw = new TextWatcher() {
             private String current = "";
             private String mmddyyyy = "MMDDYYYY";
@@ -43,6 +59,7 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onTextChanged(CharSequence s, int start, int before, int count) {
                 if (!s.toString().equals(current)) {
+                    birthdateTV.setTextColor(getResources().getColor(R.color.black));
                     String clean = s.toString().replaceAll("[^\\d.]|\\.", "");
                     String cleanC = current.replaceAll("[^\\d.]|\\.", "");
 
@@ -87,7 +104,9 @@ public class MainActivity extends AppCompatActivity {
             }
 
             @Override
-            public void beforeTextChanged(CharSequence s, int start, int count, int after) {}
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+
+            }
 
             @Override
             public void afterTextChanged(Editable s) {}
