@@ -39,13 +39,15 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onFocusChange(View view, boolean b) {
                 if (b){
-                    if (birthdateTV.getText().toString().isEmpty()){
-                        birthdateTV.setTextColor(getResources().getColor(R.color.gray));
-                        birthdateTV.setText("MM/DD/YYYY");
 
-                    }else {
-                        return;
-                    }
+                    birthdateTV.setHint("Enter birth date MM-DD-YYYY");
+//                    if (birthdateTV.getText().toString().isEmpty()){
+//                        birthdateTV.setTextColor(getResources().getColor(R.color.gray));
+//                        birthdateTV.setText("MM/DD/YYYY");
+//
+//                    }else {
+//                        return;
+//                    }
                 }
             }
         });
