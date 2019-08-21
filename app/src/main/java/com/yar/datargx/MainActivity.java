@@ -8,6 +8,7 @@ import android.view.View;
 import android.widget.Button;
 
 import com.google.android.material.textfield.TextInputEditText;
+import com.google.android.material.textfield.TextInputLayout;
 
 import java.util.Calendar;
 
@@ -18,6 +19,8 @@ public class MainActivity extends AppCompatActivity {
     TextInputEditText passwordInputText;
     TextInputEditText parentAgeInputText;
     TextInputEditText birthdateTV;
+
+    TextInputLayout bdLabel;
 
     Button signupBtn;
 
@@ -34,13 +37,16 @@ public class MainActivity extends AppCompatActivity {
         passwordInputText = findViewById(R.id.signup_input_password);
         parentAgeInputText = findViewById(R.id.signup_input_parent_age);
         birthdateTV = findViewById(R.id.birth_date_text_view);
+        bdLabel = findViewById(R.id.birth_date_label);
 
         birthdateTV.setOnFocusChangeListener(new View.OnFocusChangeListener() {
             @Override
             public void onFocusChange(View view, boolean b) {
                 if (b){
 
-                    birthdateTV.setHint("Enter birth date MM-DD-YYYY");
+                 //   birthdateTV.setHint("Enter birth date MM-DD-YYYY");
+                    bdLabel.setHint("Enter birth date MM-DD-YYYY");
+                   // birthdateTV.setText("Enter birth date MM-DD-YYYY");
 //                    if (birthdateTV.getText().toString().isEmpty()){
 //                        birthdateTV.setTextColor(getResources().getColor(R.color.gray));
 //                        birthdateTV.setText("MM/DD/YYYY");
@@ -48,6 +54,8 @@ public class MainActivity extends AppCompatActivity {
 //                    }else {
 //                        return;
 //                    }
+                } else {
+                    bdLabel.setHint("Enter birth date");
                 }
             }
         });
@@ -94,7 +102,7 @@ public class MainActivity extends AppCompatActivity {
                         clean = String.format("%02d%02d%02d",mon, day, year);
                     }
 
-                    clean = String.format("%s/%s/%s", clean.substring(0, 2),
+                    clean = String.format("%s-%s-%s", clean.substring(0, 2),
                             clean.substring(2, 4),
                             clean.substring(4, 8));
 
