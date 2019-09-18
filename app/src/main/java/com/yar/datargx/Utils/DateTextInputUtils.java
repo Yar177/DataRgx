@@ -1,21 +1,26 @@
 package com.yar.datargx.Utils;
 import android.text.Editable;
 import android.text.TextWatcher;
+import android.widget.EditText;
 
 import com.google.android.material.textfield.TextInputEditText;
 
 import java.util.Calendar;
 
 public class DateTextInputUtils implements TextWatcher {
-    private TextInputEditText inputEditText;
+    private EditText inputEditText;
     private String current = "";
     private String mmddyyyy = "MMDDYYYY";
     private Calendar cal = Calendar.getInstance();
 
+    public DateTextInputUtils(EditText inputEditText) {
+        this.inputEditText = inputEditText;
+        this.inputEditText.addTextChangedListener(this);
+    }
+
     @Override
     public void onTextChanged(CharSequence s, int start, int before, int count) {
         if (!s.toString().equals(current)) {
-            //birthdateTV.setTextColor(getResources().getColor(R.color.black));
             String clean = s.toString().replaceAll("[^\\d.]|\\.", "");
             String cleanC = current.replaceAll("[^\\d.]|\\.", "");
 
@@ -69,5 +74,7 @@ public class DateTextInputUtils implements TextWatcher {
     @Override
     public void afterTextChanged(Editable s) {
     }
+
+
 
 }
