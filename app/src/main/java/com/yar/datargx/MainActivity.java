@@ -114,6 +114,7 @@ public class MainActivity extends AppCompatActivity {
 
                     sel = sel < 0 ? 0 : sel;
                     current = clean;
+                    if (current.equalsIgnoreCase("mm-dd-yyyy")) current = "";
                     birthdateTV.setText(current);
                     birthdateTV.setSelection(sel < current.length() ? sel : current.length());
                 }
@@ -127,16 +128,6 @@ public class MainActivity extends AppCompatActivity {
 
             @Override
             public void afterTextChanged(Editable s) {
-                Log.d("+++", "afterTextChanged: =======>" + s.toString());
-//                if (s.toString().equalsIgnoreCase("mm-dd-yyyy")){
-//                    birthdateTV.setText("");
-//                }
-
-                if (birthdateTV.getText().toString().contains("Y")){
-                    birthdateTV.setText("");
-                }
-
-
             }
         };
 
