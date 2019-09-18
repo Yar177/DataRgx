@@ -4,6 +4,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 
@@ -55,7 +56,12 @@ public class MainActivity extends AppCompatActivity {
 //                        return;
 //                    }
                 } else {
+
                     bdLabel.setHint("Enter birth date");
+
+                    if (birthdateTV.getText().toString().contains("Y")){
+                        birthdateTV.setText("");
+                    }
                 }
             }
         });
@@ -69,7 +75,7 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onTextChanged(CharSequence s, int start, int before, int count) {
                 if (!s.toString().equals(current)) {
-                    birthdateTV.setTextColor(getResources().getColor(R.color.black));
+                    //birthdateTV.setTextColor(getResources().getColor(R.color.black));
                     String clean = s.toString().replaceAll("[^\\d.]|\\.", "");
                     String cleanC = current.replaceAll("[^\\d.]|\\.", "");
 
@@ -116,13 +122,27 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void beforeTextChanged(CharSequence s, int start, int count, int after) {
 
+
             }
 
             @Override
-            public void afterTextChanged(Editable s) {}
+            public void afterTextChanged(Editable s) {
+                Log.d("+++", "afterTextChanged: =======>" + s.toString());
+//                if (s.toString().equalsIgnoreCase("mm-dd-yyyy")){
+//                    birthdateTV.setText("");
+//                }
+
+                if (birthdateTV.getText().toString().contains("Y")){
+                    birthdateTV.setText("");
+                }
+
+
+            }
         };
 
         birthdateTV.addTextChangedListener(tw);
+
+
         signupBtn = findViewById(R.id.btn_signup);
         signupBtn.setOnClickListener(new View.OnClickListener() {
             @Override
