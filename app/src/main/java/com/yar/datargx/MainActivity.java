@@ -142,12 +142,6 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-//        birthdateTV.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//                datePicker();
-//            }
-//        });
     }
 
     private void signUp(View v) {
