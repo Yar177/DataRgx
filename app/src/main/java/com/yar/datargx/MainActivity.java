@@ -100,7 +100,6 @@ public class MainActivity extends AppCompatActivity {
             public void afterTextChanged(Editable s) {
             }
         };
-//        birthdateTV.addTextChangedListener(tw);
         new DateTextInputUtils(birthdateTV);
         signupBtn = findViewById(R.id.btn_signup);
         signupBtn.setOnClickListener(new View.OnClickListener() {
