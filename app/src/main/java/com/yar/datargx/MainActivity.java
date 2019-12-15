@@ -42,6 +42,7 @@ public class MainActivity extends AppCompatActivity {
                     if (birthdateTV.getText().toString().isEmpty()){
                         birthdateTV.setTextColor(getResources().getColor(R.color.gray));
                         birthdateTV.setText("MM/DD/YYYY");
+                        birthdateTV.setSelection(0);
 
                     }else {
                         return;
@@ -92,7 +93,7 @@ public class MainActivity extends AppCompatActivity {
                         clean = String.format("%02d%02d%02d",mon, day, year);
                     }
 
-                    clean = String.format("%s/%s/%s", clean.substring(0, 2),
+                    clean = String.format("%s-%s-%s", clean.substring(0, 2),
                             clean.substring(2, 4),
                             clean.substring(4, 8));
 
