@@ -42,7 +42,6 @@ public class MainActivity extends AppCompatActivity {
                     if (birthdateTV.getText().toString().isEmpty()){
                         birthdateTV.setTextColor(getResources().getColor(R.color.gray));
                         birthdateTV.setText("MM/DD/YYYY");
-                        birthdateTV.setSelection(0);
 
                     }else {
                         return;
@@ -80,15 +79,20 @@ public class MainActivity extends AppCompatActivity {
                         int mon  = Integer.parseInt(clean.substring(0,2));
                         int day  = Integer.parseInt(clean.substring(2,4));
                         int year = Integer.parseInt(clean.substring(4,8));
+
                         mon = mon < 1 ? 1 : mon > 12 ? 12 : mon;
                         cal.set(Calendar.MONTH, mon-1);
                         year = (year<1900)?1900:(year>2100)?2100:year;
                         cal.set(Calendar.YEAR, year);
+                        // ^ first set year for the line below to work correctly
+                        //with leap years - otherwise, date e.g. 29/02/2012
+                        //would be automatically corrected to 28/02/2012
+
                         day = (day > cal.getActualMaximum(Calendar.DATE))? cal.getActualMaximum(Calendar.DATE):day;
                         clean = String.format("%02d%02d%02d",mon, day, year);
                     }
 
-                    clean = String.format("%s-%s-%s", clean.substring(0, 2),
+                    clean = String.format("%s/%s/%s", clean.substring(0, 2),
                             clean.substring(2, 4),
                             clean.substring(4, 8));
 
